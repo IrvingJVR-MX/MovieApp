@@ -1,0 +1,53 @@
+query PeliculaLista{
+    movies{
+        nowPlaying{
+            edges{
+                node{
+                    id,
+                    title,
+                    poster(size:Original)
+                }
+            }
+        }
+
+        trending{
+            edges{
+                node{
+                    id,
+                    title,
+                    poster(size:Original)
+                }
+            }
+        }
+
+        topRated{
+            edges{
+                node{
+                    id,
+                    title,
+                    poster(size:Original)
+                }
+            }
+        }
+
+
+        popular{
+            edges{
+                node{
+                    id,
+                    title,
+                    poster(size: Original)
+                }
+            }
+        }
+        upcoming{
+            edges{
+                node{
+                    id,
+                    title,
+                    poster(size:Original)
+                }
+            }
+        }
+    }
+}
