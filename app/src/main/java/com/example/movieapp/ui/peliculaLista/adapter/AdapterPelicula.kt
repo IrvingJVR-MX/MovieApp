@@ -8,11 +8,11 @@ import com.example.movieapp.repositorio.model.Pelicula
 import com.example.movieapp.utils.IListListener
 import com.squareup.picasso.Picasso
 
-class PeliculaListaAdaptador(
-    private val peliculaLista: ArrayList<Pelicula>,
+class AdapterPelicula(
+    private val peliculaLista: List<Pelicula>,
     private val listener: IListListener
 ) :
-    RecyclerView.Adapter<PeliculaListaAdaptador.ViewHolder>() {
+    RecyclerView.Adapter<AdapterPelicula.ViewHolder>() {
 
     class ViewHolder(val binding: PeliculaItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun LlenarInfo(pelicula: Pelicula) {
@@ -37,7 +37,5 @@ class PeliculaListaAdaptador(
         }
     }
 
-    override fun getItemCount(): Int {
-        return peliculaLista.size
-    }
+    override fun getItemCount() = peliculaLista.size
 }

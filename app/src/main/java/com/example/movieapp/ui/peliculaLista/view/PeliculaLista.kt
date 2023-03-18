@@ -3,15 +3,14 @@ package com.example.movieapp.ui.peliculaLista.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
+import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityMainBinding
 import com.example.movieapp.repositorio.model.Pelicula
+import com.example.movieapp.repositorio.model.CollectionPelicula
 import com.example.movieapp.ui.peliculaDetalle.view.PeliculaDetalle
-import com.example.movieapp.ui.peliculaLista.adapter.PeliculaListaAdaptador
+import com.example.movieapp.ui.peliculaLista.adapter.AdapterPrincipal
 import com.example.movieapp.ui.peliculaLista.viewModel.PeliculaListaViewModel
 import com.example.movieapp.utils.CargandoDialog
 import com.example.movieapp.utils.IListListener
@@ -30,12 +29,8 @@ class PeliculaLista : AppCompatActivity(), IListListener {
     private var topRatedList: ArrayList<Pelicula> = arrayListOf()
     private var popularMovieList: ArrayList<Pelicula> = arrayListOf()
     private var upcomingMovieList: ArrayList<Pelicula> = arrayListOf()
-    private lateinit var adaptadorNowPlaying: PeliculaListaAdaptador
-    private lateinit var adaptadorTrending: PeliculaListaAdaptador
-    private lateinit var adaptadorTopRated: PeliculaListaAdaptador
-    private lateinit var adaptadorPopular: PeliculaListaAdaptador
-    private lateinit var adaptadorUpcoming: PeliculaListaAdaptador
     private lateinit var loading: CargandoDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -148,66 +143,21 @@ class PeliculaLista : AppCompatActivity(), IListListener {
                 upcomingMovieList.add(pelicula)
             }
         }
-        inicializarLista()
-    }
 
-    private fun inicializarLista() {
-        adaptadorNowPlaying = PeliculaListaAdaptador(nowPlayingMovieList, this)
-        adaptadorTrending = PeliculaListaAdaptador(trendingMovieList, this)
-        adaptadorPopular = PeliculaListaAdaptador(popularMovieList, this)
-        adaptadorTopRated = PeliculaListaAdaptador(topRatedList, this)
-        adaptadorUpcoming = PeliculaListaAdaptador(upcomingMovieList, this)
-        setearRecycler()
-    }
+        val peliculaListaFinal = listOf(
+            CollectionPelicula(getString(R.string.now_playing), nowPlayingMovieList),
+            CollectionPelicula(getString(R.string.trending), trendingMovieList),
+            CollectionPelicula(getString(R.string.popular), popularMovieList),
+            CollectionPelicula(getString(R.string.top_rated), topRatedList),
+            CollectionPelicula(getString(R.string.upcoming), upcomingMovieList),
+        )
 
-    private fun setearRecycler() {
-        //Now playing
-        val linearLayoutManagerNowPlaying =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvNowPlaying.adapter = adaptadorNowPlaying
-        binding.rvNowPlaying.layoutManager = linearLayoutManagerNowPlaying
-        val snapHelperNowPlaying = LinearSnapHelper()
-        snapHelperNowPlaying.attachToRecyclerView(binding.rvNowPlaying)
-        binding.tvNowPlaying.visibility = View.VISIBLE
+        binding.rv.adapter = AdapterPrincipal(peliculaListaFinal, this)
 
-        //trending
-        val linearLayoutManagerTrending =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvTrending.adapter = adaptadorTrending
-        binding.rvTrending.layoutManager = linearLayoutManagerTrending
-        val snapHelperTrending = LinearSnapHelper()
-        snapHelperTrending.attachToRecyclerView(binding.rvTrending)
-        binding.tvTrending.visibility = View.VISIBLE
-
-        //popular
-        val linearLayoutManagerPopular =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvPopular.adapter = adaptadorPopular
-        binding.rvPopular.layoutManager = linearLayoutManagerPopular
-        val snapHelperPopular = LinearSnapHelper()
-        snapHelperPopular.attachToRecyclerView(binding.rvPopular)
-        binding.tvPopular.visibility = View.VISIBLE
-
-        //topRated
-        val linearLayoutManagerTopRated =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvTopRated.adapter = adaptadorTopRated
-        binding.rvTopRated.layoutManager = linearLayoutManagerTopRated
-        val snapHelperTopRated = LinearSnapHelper()
-        snapHelperTopRated.attachToRecyclerView(binding.rvTopRated)
-        binding.tvTopRated.visibility = View.VISIBLE
-
-        //upcoming
-        val linearLayoutManagerUpcoming =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.rvUpcoming.adapter = adaptadorUpcoming
-        binding.rvUpcoming.layoutManager = linearLayoutManagerUpcoming
-        val snapHelperUpcoming = LinearSnapHelper()
-        snapHelperUpcoming.attachToRecyclerView(binding.rvUpcoming)
-        binding.tvUpcoming.visibility = View.VISIBLE
     }
 
     override fun detallePelicula(pelicula: Pelicula) {
+
         val intent = Intent(this, PeliculaDetalle::class.java)
         intent.putExtra("pelicula", pelicula as Serializable)
         startActivity(intent)
