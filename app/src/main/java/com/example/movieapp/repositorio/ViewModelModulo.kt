@@ -10,8 +10,8 @@ import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class ViewModelModule {
+abstract class ViewModelModulo {
     @Binds
     @ViewModelScoped
-    abstract fun bindRepository(repo: TmdbManejador): RepositorioTmdb
+    abstract fun enlaceRepositorio(repo: TmdbManejador): RepositorioTmdb
 }

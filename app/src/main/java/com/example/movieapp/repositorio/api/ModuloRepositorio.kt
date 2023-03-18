@@ -1,6 +1,5 @@
 package com.example.movieapp.repositorio.api
 
-import com.example.movieapp.repositorio.api.TmdbApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

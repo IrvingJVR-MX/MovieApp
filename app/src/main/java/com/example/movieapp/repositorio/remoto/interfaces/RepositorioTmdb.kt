@@ -4,5 +4,5 @@ import com.graphqlapollo.PeliculaListaQuery
 import com.apollographql.apollo.api.Response
 
 interface RepositorioTmdb {
-  suspend fun obtenerListaPelicula() : Response<PeliculaListaQuery.Data>
+    suspend fun obtenerListaPelicula(): Response<PeliculaListaQuery.Data>
 }

@@ -1,4 +1,5 @@
 package com.example.movieapp.ui.peliculaLista.viewModel
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.movieapp.repositorio.remoto.interfaces.RepositorioTmdb
@@ -14,15 +15,13 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PeliculaListaViewModel
-@Inject constructor(private val repositorio: RepositorioTmdb): ViewModel() {
-
-private val _PeliculaLista by lazy { MutableLiveData<ViewState<Response<PeliculaListaQuery.Data>>>()}
-val PeliculaLista : LiveData<ViewState<Response<PeliculaListaQuery.Data>>> get() = _PeliculaLista
-
+@Inject constructor(private val repositorio: RepositorioTmdb) : ViewModel() {
+    private val _PeliculaLista by lazy { MutableLiveData<ViewState<Response<PeliculaListaQuery.Data>>>() }
+    val PeliculaLista: LiveData<ViewState<Response<PeliculaListaQuery.Data>>> get() = _PeliculaLista
     fun queryPeliculaLista() = viewModelScope.launch {
         _PeliculaLista.postValue(ViewState.Loading())
         try {
-           val response = repositorio.obtenerListaPelicula()
+            val response = repositorio.obtenerListaPelicula()
             _PeliculaLista.postValue(ViewState.Success(response))
         } catch (e: ApolloException) {
             _PeliculaLista.postValue(ViewState.Error("Error"))

@@ -5,8 +5,8 @@ import com.apollographql.apollo.ApolloClient
 import okhttp3.OkHttpClient
 
 class TmdbApi {
-    fun obtenerClienteAPollo(): ApolloClient{
-        check(Looper.myLooper() == Looper.getMainLooper()){
+    fun obtenerClienteAPollo(): ApolloClient {
+        check(Looper.myLooper() == Looper.getMainLooper()) {
             "Solo el hilo principal puede obtener la instancia de apolloClient"
         }
         val okHttpClient = OkHttpClient.Builder().build()

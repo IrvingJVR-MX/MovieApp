@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,13 +7,124 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.peliculaLista.view.PeliculaLista">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/movieitem" />
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_now_playing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:text="@string/now_playing"
+            android:visibility="invisible"
+            android:textSize="18sp" />
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_now_playing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/pelicula_item" />
+
+        <TextView
+            android:id="@+id/tv_trending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:text="@string/trending"
+            android:visibility="invisible"
+            android:textSize="18sp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_trending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/pelicula_item" />
+
+        <TextView
+            android:id="@+id/tv_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:visibility="invisible"
+            android:text="@string/popular"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/pelicula_item" />
+
+        <TextView
+            android:id="@+id/tv_top_rated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:visibility="invisible"
+            android:text="@string/top_rated"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_top_rated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/pelicula_item" />
+
+        <TextView
+            android:id="@+id/tv_upcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:visibility="invisible"
+            android:text="@string/upcoming"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_upcoming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/pelicula_item" />
+
+    </LinearLayout>
+
+</ScrollView>

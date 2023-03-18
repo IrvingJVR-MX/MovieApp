@@ -5,7 +5,13 @@ query PeliculaLista{
                 node{
                     id,
                     title,
-                    poster(size:Original)
+                    poster(size:Original),
+                    overview,
+                    genres{
+                        name
+                    },
+                    rating,
+                    budget
                 }
             }
         }
@@ -15,7 +21,13 @@ query PeliculaLista{
                 node{
                     id,
                     title,
-                    poster(size:Original)
+                    poster(size:Original),
+                    overview,
+                    genres{
+                        name
+                    },
+                    rating,
+                    budget
                 }
             }
         }
@@ -25,7 +37,13 @@ query PeliculaLista{
                 node{
                     id,
                     title,
-                    poster(size:Original)
+                    poster(size:Original),
+                    overview,
+                    genres{
+                        name
+                    },
+                    rating,
+                    budget
                 }
             }
         }
@@ -36,7 +54,13 @@ query PeliculaLista{
                 node{
                     id,
                     title,
-                    poster(size: Original)
+                    poster(size: Original),
+                    overview,
+                    genres{
+                        name
+                    },
+                    rating,
+                    budget
                 }
             }
         }
@@ -45,7 +69,13 @@ query PeliculaLista{
                 node{
                     id,
                     title,
-                    poster(size:Original)
+                    poster(size:Original),
+                    overview,
+                    genres{
+                        name
+                    },
+                    rating,
+                    budget
                 }
             }
         }

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Películas</string>
+    <string name="now_playing">Reproduciendo ahora</string>
+    <string name="trending">Tendencias</string>
+    <string name="top_rated">Mejor calificadas</string>
+    <string name="popular">Populares</string>
+    <string name="upcoming">Próximamente</string>
+    <string name="budget">Presupuesto: </string>
+    <string name="rating">Calificaciòn: </string>
+    <string name="loading">Cargando… </string>
+
+</resources>
